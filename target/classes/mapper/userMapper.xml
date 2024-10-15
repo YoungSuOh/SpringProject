@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="userSQL"> -->
+<mapper namespace="com.user.dao.UserDAO">  <!-- UserDAO에서 바로 접근 -->
+	<!-- 특정 유저 아이디 확인 -->
+	<select id="getExistId" parameterType="String" resultType="userDTO">
+		SELECT * FROM usertable
+		WHERE id = #{id}
+	</select>
+
+	<!-- 특정 유저 비밀번호 확인 -->
+	<select id="getExistPwd" parameterType="String"
+		resultType="userDTO">
+		SELECT * FROM usertable
+		WHERE id = #{id}
+	</select>
+	
+	<!-- 유저 등록 -->
+	<insert id="write" parameterType="userDTO">
+		INSERT INTO usertable (name, id, pwd)
+		VALUES (#{name}, #{id}, #{pwd})
+	</insert>
+
+	<!-- 유저 목록 가져오기 -->
+	<select id="getUserList" parameterType="map" resultType="userDTO">
+		SELECT * FROM usertable limit ${startNum}, #{endNum};
+	</select>
+
+	<select id="getTotalUserCount" resultType="int">
+		SELECT count(*) FROM usertable;
+	</select>
+
+
+
+	<!-- 유저 정보 업데이트 -->
+	<update id="update" parameterType="userDTO">
+		UPDATE usertable
+		SET name = #{name}, pwd = #{pwd}
+		WHERE id = #{id}
+	</update>
+
+	<!-- 유저 삭제 -->
+	<delete id="delete" parameterType="string">
+		DELETE FROM usertable
+		WHERE id = #{id}
+	</delete>
+
+</mapper>
