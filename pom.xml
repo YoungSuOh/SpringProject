@@ -3,8 +3,8 @@
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.spring</groupId>
-   <artifactId>NCPSpringMaven</artifactId>
-   <name>NCPSpringMaven</name>
+   <artifactId>SpringProject</artifactId>
+   <name>SpringProject</name>
    <packaging>war</packaging>
    <version>1.0.0-BUILD-SNAPSHOT</version>
    <properties>
@@ -219,6 +219,16 @@
       </dependency>        
    </dependencies>
     <build>
+	    <finalName>SpringProject</finalName>
+		<resources>
+			<resource>
+				<directory>${project.basedir}</directory>
+				<excludes>
+					<exclude>.classpath</exclude>
+					<exclude>.project</exclude>
+				</excludes>
+			</resource>
+		</resources>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
